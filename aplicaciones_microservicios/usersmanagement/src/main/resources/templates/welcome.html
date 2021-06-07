@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+  <body>
+
+    <h2 th:text="#{welcome}">Welcome</h2>
+         <div class="row">
+        <div class="col-md-12">
+           
+         <p>Este servicio es una <b>PRUEBA DE CONCEPTO</b> que sirve para CREAR, RECUPERAR, MODIFICAR y BORRAR a los diferentes usuarios que utilizarán los
+         diferentes microservicios realizados por SICOSS.</p>
+         <br>
+         <p>
+         La gestión de los usuarios la tienen que realizar los propios funcionarios de SICOSS,así como de las distintas aplicaciones
+         a los que los usuarios van a tener acceso. Los cambios no son immediatos, por lo que se recomienda esperar un tiempo antes de enviar las credenciales
+         </p>
+         <br> 
+         <p>       
+         Ante cualquier duda, dirigirse al correo de incidencias de SICOSS.
+        </div>
+    </div>
+    	<br>
+     
+     <a th:href="@{/users/}" class="btn btn-default">Ver usuarios</a>
+	 <a class="btn btn-default" th:href="@{/users/new}">Alta usuario</a>
+
+
+
+  </body>
+
+</html>

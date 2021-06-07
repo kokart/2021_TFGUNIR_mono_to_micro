@@ -1,0 +1,37 @@
+<html xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: layout (~{::body},'users')}">
+
+<body>
+
+  <h2>Alta de Usuario</h2>
+  <form th:object="${user}" class="form-horizontal" id="add-user-form" method="post">
+    <div class="form-group has-feedback">
+      <input
+        th:replace="~{fragments/inputField :: input ('Nombre', 'nombre', 'text')}" />
+      <input
+        th:replace="~{fragments/inputField :: input ('Apellido', 'apellido', 'text')}" />
+      <input
+        th:replace="~{fragments/inputField :: input ('Centro', 'centro', 'text')}" />
+      <input
+        th:replace="~{fragments/inputField :: input ('Código Silcon', 'silcon', 'text')}" />
+              <input
+        th:replace="~{fragments/inputField :: input ('Aplicación', 'aplicacion', 'text')}" />
+        <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+              <i>Lista de aplicaciones para probar:</i> Editrans, ADOK, Ifiweb 
+      </div>
+
+    </div>
+       <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+              <button
+          th:with="text=${user['new']} ? 'Añadir Usuario' : 'Modificar Usuario'"
+          class="btn btn-default" type="submit" th:text="${text}">Añadir usuario</button>
+      </div>
+      
+       </div>
+       
+    </div>
+  </form>
+</body>
+</html>

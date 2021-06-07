@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: layout (~{::body},'users')}">
+
+  <body>
+  
+  
+    <h2>Información del Usuario</h2>
+  
+  
+    <table class="table table-striped" th:object="${user}">
+      <tr>
+        <th>Nombre completo</th>
+        <td><b th:text="*{nombre + ' ' + apellido}"></b></td>
+      </tr>
+      <tr>
+        <th>Centro</th>
+        <td th:text="*{centro}"></td>
+      </tr>
+      <tr>
+        <th>Código Silcon</th>
+        <td th:text="*{silcon}"></td>
+      </tr>   
+       <tr>
+        <th>Aplicación</th>
+        <td th:text="*{aplicacion}"></td>
+      </tr>
+    </table>
+  
+    <a th:href="@{{id}/edit(id=${user.id})}" class="btn btn-default">Modificar usuario</a>
+    <a th:href="@{{id}/delete(id=${user.id})}" class="btn btn-default">Borrar usuario</a>
+     <a th:href="@{/users/}" class="btn btn-default">Volver a la lista</a>
+    
+  
+   
+  
+  </body>
+
+</html>
