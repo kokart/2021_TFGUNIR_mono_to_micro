@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+
+	<meta charset="utf-8">
+	<title>SICOSS - Editrans</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link href="/css/main.css" rel="stylesheet">
+</head>
+
+<body "p-3 mb-2 bg-light">
+
+	<header id="main-hader">
+
+		<img class="header_giss" src="http://localhost:8080/resources/images/logo_con_banederas_gis.jpg" align="center">
+
+	</header>
+
+
+	<div class="container">
+		<div sec:authorize="isAuthenticated()">
+			<form id="logoutForm" method="POST" th:action="@{/logout}">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			</form>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+	<script src="/js/main.js"></script>
+
+	<h2>Bievenido <span sec:authentication="name"></span></h2>
+	<form class="col-12" th:action="@{/download/file/Ifiwebsalida.txt}" th:object="${username}" method="post">
+		<br>
+		<div class="form-group">
+			<label>Indica el fichero de entrada que ha dado error y pulsa en Obtener fichero de respuesta</label><br>
+			<input name="username" id="username" type="text" class="inputfile" placeholder="Fichero de Entrada"
+				autofocus="true" />
+			<br>
+			<br>
+			<button type="submit" class="btn btn-primary">
+				<i class="fas fa-sign-in-alt"></i> Obtener fichero de respuesta</button> </div>
+	</form>
+
+	<br>
+	<form class="col-12" th:action="@{/logout}" method="post">
+		<input type="submit" value="Cerrar Sesion" />
+</body>
+
+
+
+</html>
